@@ -1,6 +1,6 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
-import sequelize from './db';
-import User from './User';
+import sequelize from './db.js';
+import User from './User.js';
 class Box extends Model { }
 
 Box.init(
@@ -31,8 +31,12 @@ Box.init(
             allowNull: false,
         },
         userId: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.UUID,
             allowNull: false,
+            references: {
+                model: User,
+                key: 'id'
+            }
         }
     },
     {
