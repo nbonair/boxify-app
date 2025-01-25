@@ -1,0 +1,32 @@
+{
+    "$id": "boxSchema",
+    "type":"object",
+    "properties": {
+        "boxLength": {
+            "type":"number",
+            "minimum": 0.001
+        },
+        "boxWidth": {
+            "type":"number",
+            "minimum": 0.001
+        },
+        "boxHeight": {
+            "type":"number",
+            "minimum": 0.001
+        },
+        "boxMaxWeight": {
+            "type":"number",
+            "minimum": 0.01
+        },
+        "boxPrice": {
+            "type":"number",
+            "minimum": 0.01
+        },
+        "userId": {
+            "type":"string",
+            "format": "uuid"
+        }
+    },
+    "required": ["userId", "boxLength", "boxWidth", "boxHeight", "boxMaxWeight", "boxPrice"],
+    "additionalProperties": false
+}
