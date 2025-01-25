@@ -6,5 +6,6 @@ import { validateSchema } from '../../middlewares/validators/validateSchema.js';
 import { boxSchema } from '../../middlewares/validators/schemas/index.js';
 const router = express.Router();
 router.post('/',validateSchema(boxSchema), asyncHandler(checkBoxPrivileges), asyncHandler(BoxController.createBox));
+router.get('/', asyncHandler(BoxController.getBoxesByUserId));
 
 export default router
