@@ -1,32 +1,56 @@
 {
     "$id": "boxSchema",
     "type":"object",
-    "properties": {
-        "boxLength": {
-            "type":"number",
-            "minimum": 0.001
+
+    "definitions": {
+        "create": {
+            "type":"object",
+            "properties": {
+                "length": {
+                    "type":"number",
+                    "minimum": 0.001
+                },
+                "width": {
+                    "type":"number",
+                    "minimum": 0.001
+                },
+                "height": {
+                    "type":"number",
+                    "minimum": 0.001
+                },
+                "maxWeight": {
+                    "type":"number",
+                    "minimum": 0.01
+                },
+                "price": {
+                    "type":"number",
+                    "minimum": 0.01
+                },
+                "userId": {
+                    "type":"string",
+                    "format": "uuid"
+                }
+            },
+            "required": ["userId", "length", "width", "height", "maxWeight", "price"],
+            "additionalProperties": false
         },
-        "boxWidth": {
-            "type":"number",
-            "minimum": 0.001
-        },
-        "boxHeight": {
-            "type":"number",
-            "minimum": 0.001
-        },
-        "boxMaxWeight": {
-            "type":"number",
-            "minimum": 0.01
-        },
-        "boxPrice": {
-            "type":"number",
-            "minimum": 0.01
-        },
-        "userId": {
-            "type":"string",
-            "format": "uuid"
+        "update": {
+            "type": "object",
+            "properties": {
+                "length": { "type": "number", "minimum": 0.01 },
+                "width": { "type": "number", "minimum": 0.01 },
+                "height": { "type": "number", "minimum": 0.01 },
+                "maxWeight": { "type": "number", "minimum": 0.01 },
+                "price": { "type": "number", "minimum": 0.01 }
+            },
+            "anyOf": [
+                {"required": ["length"]},
+                {"required": ["width"]},
+                {"required": ["height"]},
+                {"required": ["maxWeight"]},
+                {"required": ["price"]}
+            ],
+            "additionalProperties": true
         }
-    },
-    "required": ["userId", "boxLength", "boxWidth", "boxHeight", "boxMaxWeight", "boxPrice"],
-    "additionalProperties": false
+    }
 }
