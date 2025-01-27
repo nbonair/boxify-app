@@ -42,3 +42,9 @@ export const updateBox = async (id, updateFields) => {
 
     return box
 }
+
+export const deleteBox = async (id) => {
+    return await Box.destroy({
+        where: { id }
+    });
+}

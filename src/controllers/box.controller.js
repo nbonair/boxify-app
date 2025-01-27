@@ -1,4 +1,4 @@
-import { getBoxes, insertBox, updateBox } from "../services/box.service.js";
+import { deleteBox, getBoxes, insertBox, updateBox } from "../services/box.service.js";
 import { pickUpdateFields } from "../utils/pickUpdateFields.js";
 
 export class BoxController {
@@ -46,6 +46,27 @@ export class BoxController {
             status: 200,
             metadata: {},
             data: { ...result.dataValues }
+        })
+    }
+
+    static deleteBoxById = async (req, res, next) => {
+        const { id } = req.params;
+
+        const result = await deleteBox(id);
+
+
+        result ? res.status(200).json({
+            message: 'Box Deleted Successfully',
+            status: 200,
+            metadata: {},
+            data: id
+        }) : res.status(404).json({
+            message: `Box with id ${id} not found`,
+            status: 404,
+            metadata: {},
+            data: {
+                'id': id
+            }
         })
     }
 }
