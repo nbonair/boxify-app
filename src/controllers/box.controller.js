@@ -3,7 +3,8 @@ import { pickUpdateFields } from "../utils/pickUpdateFields.js";
 
 export class BoxController {
     static createBox = async (req, res, next) => {
-        const { userId, length, width, height, maxWeight, price } = req.body;
+        const userId = req.user.id;
+        const { length, width, height, maxWeight, price } = req.body;
 
         const result = await insertBox(userId, length, width, height, maxWeight, price);
 

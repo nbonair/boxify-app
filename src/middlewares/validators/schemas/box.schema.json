@@ -25,13 +25,9 @@
                 "price": {
                     "type":"number",
                     "minimum": 0.01
-                },
-                "userId": {
-                    "type":"string",
-                    "format": "uuid"
                 }
             },
-            "required": ["userId", "length", "width", "height", "maxWeight", "price"],
+            "required": ["length", "width", "height", "maxWeight", "price"],
             "additionalProperties": false
         },
         "update": {
