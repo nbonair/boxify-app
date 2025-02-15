@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class User extends Model {
+class UserModel extends Model {
 	static initModel(sequelize) {
-		User.init(
+		UserModel.init(
 			{
 				id: {
 					type: DataTypes.UUID,
@@ -30,8 +30,9 @@ class User extends Model {
 	}
 
 	static associate(models) {
-		User.hasMany(models.Box, {foreignKey: `userId`, as:`boxes`});
-		User.hasMany(models.UserIdentity, {foreignKey: `userId`, as: `identities`});
+		UserModel.hasMany(models.Box, {foreignKey: `userId`, as:`boxes`});
+		UserModel.hasMany(models.UserIdentity, {foreignKey: `userId`, as: `identities`});
+		UserModel.hasMany(models.Product, {foreignKey: `userId`, as: `products`});
 	}
 }
-export default User;
+export default UserModel;

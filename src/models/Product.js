@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class Product extends Model {
+class ProductModel extends Model {
     static initModel(sequelize) {
-        Product.init(
+        ProductModel.init(
             {
                 id: {
                     type: DataTypes.UUID,
@@ -43,15 +43,15 @@ class Product extends Model {
             {
                 sequelize,
                 modelName: 'Product',
-                tableName: 'products',
+                tableName: 'Products',
                 timestamps: true
             }
         );
     }
     static associate(models) {
-        Product.belongsTo(models.User, { foreignKey: 'userId', as: 'user' })
+        ProductModel.belongsTo(models.User, { foreignKey: 'userId', as: 'user' })
     };
 }
 
 
-export default Product;
+export default ProductModel;

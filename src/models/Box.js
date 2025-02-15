@@ -1,8 +1,8 @@
 import { Sequelize, DataTypes, Model } from 'sequelize';
 
-class Box extends Model {
+class BoxModel extends Model {
     static initModel(sequelize) {
-        Box.init(
+        BoxModel.init(
             {
                 id: {
                     type: DataTypes.UUID,
@@ -44,8 +44,8 @@ class Box extends Model {
         
     }
     static associate(models) {
-        Box.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
+        BoxModel.belongsTo(models.User, {foreignKey: 'userId', as: 'user'});
     }
 }
 
-export default Box;
+export default BoxModel;

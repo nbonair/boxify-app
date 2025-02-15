@@ -1,8 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 
-class UserIdentity extends Model {
+class UserIdentityModel extends Model {
     static initModel(sequelize) {
-        UserIdentity.init(
+        UserIdentityModel.init(
             {
                 id: {
                     type: DataTypes.UUID,
@@ -35,9 +35,9 @@ class UserIdentity extends Model {
     }
 
     static associate(models) {
-        UserIdentity.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'id', as: 'user' });
+        UserIdentityModel.belongsTo(models.User, { foreignKey: 'userId', targetKey: 'id', as: 'user' });
 
     }
 }
 
-export default UserIdentity;
+export default UserIdentityModel;

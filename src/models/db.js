@@ -1,10 +1,9 @@
 import { Model, Sequelize } from "sequelize";
 import dotenv from 'dotenv';
-import logger from "../utils/logger.js";
-import User from "./User.js";
-import UserIdentity from "./UserIdentity.js";
-import Product from "./Product.js";
-import Box from "./Box.js";
+import UserModel from "./User.js";
+import UserIdentityModel from "./UserIdentity.js";
+import ProductModel from "./Product.js";
+import BoxModel from "./Box.js";
 
 dotenv.config();
 
@@ -34,16 +33,21 @@ const sequelize = isCloudDB
     );
 
 const models = {
-    Box: Box.initModel(sequelize),
-    Product: Product.initModel(sequelize),
-    User: User.initModel(sequelize),
-    UserIdentity: UserIdentity.initModel(sequelize),
+    Box: BoxModel.initModel(sequelize),
+    Product: ProductModel.initModel(sequelize),
+    User: UserModel.initModel(sequelize),
+    UserIdentity: UserIdentityModel.initModel(sequelize),
 }
 
-Object.values(models).keys(model => {
+Object.keys(models).forEach(model => {
     if (model.associate) {model.associate(models)}
 });
 
-export { sequelize, models };
+await sequelize.authenticate();
+
+export const Box = sequelize.models.Box;
+export const Product = sequelize.models.Product;
+export const User = sequelize.models.User;
+export const UserIdentity = sequelize.models.UserIdentity;
 
 export default sequelize;
