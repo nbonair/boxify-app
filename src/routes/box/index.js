@@ -10,7 +10,6 @@ const router = express.Router();
 router.post('/', validateSchema(boxSchema.definitions.create), asyncHandler(checkBoxPrivileges), asyncHandler(BoxController.createBox));
 router.get('/', asyncHandler(BoxController.getBoxesByUserId));
 router.patch('/:id', validateSchema(boxSchema.definitions.update), asyncHandler(BoxController.updateBoxDimension));
-router.patch('/:id', validateSchema(boxSchema.definitions.update), asyncHandler(BoxController.updateBoxDimension));
 router.delete('/:id', asyncHandler(BoxController.deleteBoxById));
 
 export default router
