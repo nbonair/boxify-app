@@ -6,7 +6,6 @@ export class ProductController {
         const userId = req.user.id;
         const payload = req.body;
         const result = await createProduct(userId, payload);
-        console.log(result);
         res.status(200).json(successResponse(200,'Created successfully',{},result));
     }
 }
