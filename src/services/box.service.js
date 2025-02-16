@@ -14,14 +14,14 @@ export const insertBox = async (userId, length, width, height, maxWeight, price)
     return await Box.create(boxData);
 }
 
-export const getBoxes = async (userId, limit, offset) => {
+export const getBoxes = async (userId, limit, offset, order) => {
     const { count, rows } = await Box.findAndCountAll({
         where: {
             userId: userId
         },
         limit: limit,
         offset: offset,
-        order: [['createdAt', 'DESC']],
+        order: order? order : [['createdAt', 'DESC']],
         attributes: ['id', 'length', 'width', 'height', 'maxWeight', 'price']
     });
 
